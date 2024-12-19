@@ -21,11 +21,8 @@ jobs:
         with:
           node-version: '20.16.0'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm install --legacy-peer-deps
 
       - name: Build packages
-        run: pnpm run build
+        run: npm run build
