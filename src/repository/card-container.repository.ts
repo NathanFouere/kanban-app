@@ -3,7 +3,7 @@ import { CardModel } from '@/model/card.model.ts';
 
 export class CardContainerRepository {
   private static instance: CardContainerRepository | null = null;
-  private cardContainers: CardContainerModel[] = [];
+  private readonly cardContainers: CardContainerModel[] = [];
 
   private constructor() {
     const cc1 = new CardContainerModel();
