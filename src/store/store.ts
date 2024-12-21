@@ -50,8 +50,8 @@ export class Store {
     this.getCardContainers();
   }
 
-  public createCardContainer(): void {
-    CardContainerRepository.getInstance().getCardContainers().push(new CardContainerModel());
+  public createCardContainer(title: string): void {
+    CardContainerRepository.getInstance().getCardContainers().push(new CardContainerModel(title));
     this.getCardContainers();
   }
 }

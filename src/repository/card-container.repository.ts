@@ -6,7 +6,7 @@ export class CardContainerRepository {
   private readonly cardContainers: CardContainerModel[] = [];
 
   private constructor() {
-    const cc1 = new CardContainerModel();
+    const cc1 = new CardContainerModel('to do');
     cc1.addCard(new CardModel('Card 1', 'Card content 1', 1));
     cc1.addCard(new CardModel('Card 2', 'Card content 2', 1));
     cc1.addCard(new CardModel('Card 3', 'Card content 3', 1));
@@ -16,7 +16,7 @@ export class CardContainerRepository {
     cc1.addCard(new CardModel('Card 7', 'Card content 7', 1));
     cc1.addCard(new CardModel('Card 8', 'Card content 8', 1));
 
-    const cc2 = new CardContainerModel();
+    const cc2 = new CardContainerModel('working on');
     cc2.addCard(new CardModel('Card 9', 'Card content 9', 2));
     cc2.addCard(new CardModel('Card 10', 'Card content 10', 2));
     cc2.addCard(new CardModel('Card 11', 'Card content 11', 2));
@@ -26,7 +26,7 @@ export class CardContainerRepository {
     cc2.addCard(new CardModel('Card 15', 'Card content 15', 2));
     cc2.addCard(new CardModel('Card 16', 'Card content 16', 2));
 
-    const cc3 = new CardContainerModel();
+    const cc3 = new CardContainerModel('done');
     cc3.addCard(new CardModel('Card 17', 'Card content 17', 3));
     cc3.addCard(new CardModel('Card 18', 'Card content 18', 3));
     cc3.addCard(new CardModel('Card 19', 'Card content 19', 3));

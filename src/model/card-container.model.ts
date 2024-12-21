@@ -2,11 +2,13 @@ import { CardModel } from '@/model/card.model.ts';
 
 export class CardContainerModel {
   public id: number;
+  public title: string;
   public cards: CardModel[];
 
-  constructor() {
+  constructor(title: string) {
     this.id = Math.floor(Math.random() * 100);
     this.cards = [];
+    this.title = title;
   }
 
   addCard(card: CardModel) {

@@ -23,6 +23,7 @@ const onDragOver = (event: DragEvent) => {
 
 <template>
   <div class="flex flex-col border-2 border-black" @dragover="onDragOver" @drop="onDrop">
+    <h1 class="border-b-[2px] text-center">{{ cardContainer.title }}</h1>
     <card-component v-for="card in cardContainer.cards" :key="card.id" :card="card" />
     <create-card-modal :card-container-id="cardContainer.id" />
   </div>

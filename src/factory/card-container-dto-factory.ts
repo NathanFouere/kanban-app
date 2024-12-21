@@ -6,6 +6,7 @@ export class CardContainerDtoFactory {
   public static fromCardContainer(cardContainer: CardContainerModel): CardContainerDto {
     return {
       id: cardContainer.id,
+      title: cardContainer.title,
       cards: cardContainer.cards.map((card) => CardDtoFactory.fromCard(card)),
     };
   }
