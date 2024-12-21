@@ -1,26 +1,21 @@
 <script setup lang="ts">
-import CardComponent from '@/components/CardComponent.vue'
-import { CardModel } from '@/model/card.model.ts'
+import CardContainerComponent from '@/components/CardContainerComponent.vue';
+import { Store } from '@/store/store.ts';
+import { onMounted } from 'vue';
 
-const cards = [
-  new CardModel(1, 'Card 1', 'Card content 1'),
-  new CardModel(2,'Card 2', 'Card content 2'),
-  new CardModel(3,'Card 3', 'Card content 3'),
-  new CardModel(4,'Card 4', 'Card content 3'),
-  new CardModel(5,'Card 5', 'Card content 4'),
-  new CardModel(6,'Card 6', 'Card content 5'),
-  new CardModel(7,'Card 7', 'Card content 6'),
-  new CardModel(8,'Card 8', 'Card content 7'),
-]
+const store = Store.getInstance();
+onMounted(() => {
+  store.getCardContainers();
+});
 </script>
 
 <template>
-  <card-component
-    v-for="card in cards"
-    :key="card.id"
-    :card="card"
-  />
+  <div class="flex flex-row gap-4 m-8">
+    <card-container-component
+      v-for="cardContainer in store.storeContent.value.cardContainers"
+      :key="cardContainer.id"
+      :card-container="cardContainer"
+    />
+    <button @click="Store.getInstance().createCardContainer()">Create card container</button>
+  </div>
 </template>
-
-<style scoped>
-</style>
