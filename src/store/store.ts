@@ -4,9 +4,6 @@ import type { StoreContentModel } from '@/store/store-content.model.ts';
 import { CardModel } from '@/model/card.model.ts';
 import { CardContainerDtoFactory } from '@/factory/card-container-dto-factory.ts';
 import type { CardDto } from '@/dto/card-dto.ts';
-import type { CardContainerDto } from '@/dto/card-container-dto.ts';
-import { CardContainerModel } from '@/model/card-container.model.ts';
-
 export class Store {
   private static instance: Store | null = null;
   public storeContent = ref<StoreContentModel>({
@@ -28,8 +25,17 @@ export class Store {
     this.storeContent.value.cardContainers = cardContainersDto;
   }
 
-  public moveCard(card: CardDto, newParent: CardContainerDto): void {
-    CardContainerRepository.getInstance().moveCard(card.id, card.cardContainerId, newParent.id);
+  public moveCard(
+    card: CardDto,
+    newCardContainerId: number,
+    targetCardPosition: number | null = null,
+  ): void {
+    CardContainerRepository.getInstance().moveCard(
+      card.id,
+      card.cardContainerId,
+      newCardContainerId,
+      targetCardPosition,
+    );
     this.getCardContainers();
   }
 
@@ -44,14 +50,15 @@ export class Store {
   }
 
   public createCard(cardTitle: string, cardContent: string, containerId: number): void {
-    const card = new CardModel(cardTitle, cardContent, containerId);
     const cardContainer = CardContainerRepository.getInstance().getCardContainer(containerId);
+    const card = new CardModel(cardTitle, cardContent, containerId, cardContainer.cards.length);
     cardContainer.addCard(card);
     this.getCardContainers();
   }
 
   public createCardContainer(title: string): void {
-    CardContainerRepository.getInstance().getCardContainers().push(new CardContainerModel(title));
+    CardContainerRepository.getInstance().createCardContainer(title);
     this.getCardContainers();
+    console.log(this.storeContent.value.cardContainers);
   }
 }

@@ -2,7 +2,7 @@
 import CardContainerComponent from '@/components/CardContainerComponent.vue';
 import { Store } from '@/store/store.ts';
 import { onMounted } from 'vue';
-import CreateCardComponentModal from '@/modal/CreateCardComponentModal.vue';
+import CreateCardModal from '@/modal/CreateCardContainerModal.vue';
 
 const store = Store.getInstance();
 onMounted(() => {
@@ -17,6 +17,6 @@ onMounted(() => {
       :key="cardContainer.id"
       :card-container="cardContainer"
     />
-    <create-card-component-modal />
+    <create-card-modal />
   </div>
 </template>

@@ -2,15 +2,11 @@
 import { ref } from 'vue';
 import { Store } from '@/store/store.ts';
 
-const props = defineProps<{
-  cardContainerId: number;
-}>();
 const isOpen = ref(false);
 const title = ref('');
-const content = ref('');
 
 const submit = () => {
-  Store.getInstance().createCard(title.value, content.value, props.cardContainerId);
+  Store.getInstance().createCardContainer(title.value);
   isOpen.value = false;
 };
 
@@ -20,12 +16,12 @@ const closeModal = () => {
 </script>
 
 <template>
-  <div class="text-center py-4">
+  <div>
     <button
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-10"
       @click="isOpen = !isOpen"
     >
-      Create a card
+      Create new card container
     </button>
   </div>
   <div
@@ -34,18 +30,12 @@ const closeModal = () => {
   >
     <div>
       <div class="w-72 mx-auto my-36 p-5 bg-white rounded-md shadow-md">
-        <h1 class="text-center">Create a card</h1>
+        <h1>Create a card container</h1>
         <div>
           <input
             type="text"
-            placeholder="Enter a title..."
+            placeholder="title"
             v-model="title"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
-          <input
-            type="text"
-            placeholder="content"
-            v-model="content"
             class="w-full px-4 py-2 border rounded-lg shadow-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>

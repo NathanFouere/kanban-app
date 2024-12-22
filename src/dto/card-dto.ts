@@ -3,4 +3,5 @@ export interface CardDto {
   title: string;
   content: string;
   cardContainerId: number;
+  position: number;
 }

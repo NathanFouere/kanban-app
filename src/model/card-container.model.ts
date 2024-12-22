@@ -23,4 +23,22 @@ export class CardContainerModel {
     }
     this.cards.splice(cardIndex, 1);
   }
+
+  getSortedCards(): CardModel[] {
+    return this.cards.sort((a, b) => a.position - b.position);
+  }
+
+  updateCardPositions(positionToMoveFrom: number) {
+    this.cards
+      .filter((card) => card.position < positionToMoveFrom)
+      .forEach((card) => {
+        card.position -= 1;
+      });
+
+    this.cards
+      .filter((card) => card.position >= positionToMoveFrom)
+      .forEach((card) => {
+        card.position += 1;
+      });
+  }
 }
