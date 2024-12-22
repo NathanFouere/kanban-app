@@ -17,6 +17,7 @@ export class CardSerializer {
       title: card.title,
       content: card.content,
       cardContainerId: card.cardContainerId,
+      position: card.position,
     };
   }
 }
