@@ -8,6 +8,7 @@ export class CardDtoFactory {
       title: card.title,
       content: card.content,
       cardContainerId: card.cardContainerId,
+      position: card.position,
     };
   }
 }
