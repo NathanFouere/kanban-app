@@ -11,12 +11,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-row gap-4 m-8">
-    <card-container-component
-      v-for="cardContainer in store.storeContent.value.cardContainers"
-      :key="cardContainer.id"
-      :card-container="cardContainer"
-    />
-    <create-card-modal />
-  </div>
+  <v-container>
+    <v-row cols="12">
+      <v-col
+        v-for="cardContainer in store.storeContent.value.cardContainers"
+        :key="cardContainer.id"
+      >
+        <card-container-component :card-container="cardContainer" />
+      </v-col>
+      <create-card-modal />
+    </v-row>
+  </v-container>
 </template>

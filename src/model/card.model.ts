@@ -7,6 +7,6 @@ export class CardModel {
     public cardContainerId: number,
     public position: number,
   ) {
-    this.id = Math.floor(Math.random() * 100);
+    this.id = Math.floor(Math.random() * 100); // causes bugs because sometimes the id is the same
   }
 }

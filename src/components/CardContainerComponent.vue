@@ -17,6 +17,7 @@ const dragOnCounter = ref(0);
 watch(dragOnCounter, (newValue) => {
   dropOnGoing.value = newValue !== 0;
 });
+
 const onDrop = (event: DragEvent) => {
   if (!event.dataTransfer) return;
 
@@ -47,27 +48,36 @@ const stopDragAnimation = () => {
 
 <template>
   <div
-    class="flex flex-col w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-4 m-4"
+    class="ma-4 pa-4"
     @dragover="onDragOver"
     @dragenter="onDragEnter"
     @dragleave="onDragLeave"
     @dragend="dropOnGoing = false"
     @drop="onDrop"
   >
-    <h1 class="text-lg font-bold text-center text-gray-800 border-b pb-2 mb-4">
-      {{ cardContainer.title }}
-    </h1>
-
-    <div class="space-y-3">
-      <card-component
-        v-for="card in cardContainer.cards"
-        :key="card.id"
-        :card="card"
-        @stop-card-container-drop-animation="stopDragAnimation"
-      />
-      <div v-if="dropOnGoing" class="w-full h-28 bg-gray-300 opacity-50 my-3" />
-    </div>
-
-    <create-card-modal :card-container-id="cardContainer.id" />
+    <v-card outlined>
+      <v-card-title class="text-h5 text-center">{{ cardContainer.title }}</v-card-title>
+      <v-card-text>
+        <v-container>
+          <v-row>
+            <v-col v-for="card in cardContainer.cards" :key="card.id" cols="12">
+              <card-component
+                :card="card"
+                @stop-card-container-drop-animation="stopDragAnimation"
+              />
+            </v-col>
+          </v-row>
+          <v-row v-if="dropOnGoing">
+            <v-col cols="12">
+              <v-skeleton-loader type="card" elevation="24" class="mb-1" />
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-card-text>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <create-card-modal :card-container-id="cardContainer.id" />
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
