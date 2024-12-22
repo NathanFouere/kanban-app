@@ -59,6 +59,5 @@ export class Store {
   public createCardContainer(title: string): void {
     CardContainerRepository.getInstance().createCardContainer(title);
     this.getCardContainers();
-    console.log(this.storeContent.value.cardContainers);
   }
 }

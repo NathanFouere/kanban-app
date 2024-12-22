@@ -3,7 +3,7 @@ import { CardModel } from '@/model/card.model.ts';
 
 export class CardContainerRepository {
   private static instance: CardContainerRepository | null = null;
-  private readonly cardContainers: CardContainerModel[] = [];
+  private cardContainers: CardContainerModel[] = [];
 
   private constructor() {
     const cc1 = new CardContainerModel('to do');
@@ -43,6 +43,10 @@ export class CardContainerRepository {
       CardContainerRepository.instance = new CardContainerRepository();
     }
     return CardContainerRepository.instance;
+  }
+
+  public clearCardContainers(): void {
+    this.cardContainers = [];
   }
 
   public getCardContainers(): CardContainerModel[] {
@@ -87,11 +91,8 @@ export class CardContainerRepository {
 
       card.position = targetCardPosition;
     }
-    console.log('new card position', card.position);
-    console.log('target card position', targetCardPosition);
     parentCard.removeCard(cardId);
     newParent.addCard(card);
-    console.log(this.getCardContainers());
   }
 
   public deleteCard(cardId: number, cardContainerId: number) {
