@@ -8,10 +8,6 @@ export default mergeConfig(
     test: {
       environment: 'jsdom',
       root: fileURLToPath(new URL('./', import.meta.url)),
-      reporters: [['vitest-sonar-reporter', { outputFile: 'sonar-report.xml' }]],
-      coverage: {
-        provider: 'istanbul',
-      },
     },
   }),
 );
