@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a Kanban board application built using Vue 3, Vuetify, and TypeScript. The goal is to allow users to manage tasks visually with the following features:
+This project is a little Kanban board web page built using Vue 3, Vuetify, and TypeScript made for an internship application. The goal is to allow users to manage tasks visually with the following features:
 
 - **Column Management**: Multiple columns representing task statuses.
 - **Drag-and-Drop**: Cards can be moved between columns via drag-and-drop.
